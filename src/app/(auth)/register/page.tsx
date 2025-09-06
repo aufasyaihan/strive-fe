@@ -1,12 +1,7 @@
 import StriveIcon from "@/components/icons/icon";
 import Password from "@/components/input-password";
 import { Button } from "@/components/ui/button";
-import {
-    Card,
-    CardContent,
-    CardHeader,
-    CardTitle,
-} from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Link from "next/link";
@@ -20,7 +15,7 @@ export default function RegisterPages() {
                     href="/"
                     className="flex items-center gap-2 self-center font-medium"
                 >
-                    <StriveIcon className="h-10 w-20 stroke-2" />
+                    <StriveIcon className="h-10 w-25 stroke-2 text-amber-500" />
                 </Link>
                 <div className="flex flex-col gap-6">
                     <Card>

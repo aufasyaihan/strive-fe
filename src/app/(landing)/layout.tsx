@@ -6,11 +6,11 @@ export default function LandingPageLayout({
     children: React.ReactNode;
 }) {
     return (
-        <div className="min-h-dvh bg-gray-100">
-            <header className="bg-transparent py-2 sticky top-0 z-50">
+        <div className="min-h-dvh">
+            <header className="flex w-fit gap-2 bg-transparent py-4 sticky top-0 z-50 mx-auto ">
                 <Navbar />
             </header>
-            {children}
+            <main className="h-full w-full">{children}</main>
         </div>
     );
 }

@@ -20,7 +20,7 @@ export default function LoginPage() {
                     href="/"
                     className="flex items-center gap-2 self-center font-medium"
                 >
-                    <StriveIcon className="h-10 w-20 stroke-2" />
+                    <StriveIcon className="h-10 w-25 stroke-2 text-amber-500" />
                 </Link>
                 <div className="flex flex-col gap-6">
                     <Card>
