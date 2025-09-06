@@ -1,7 +1,8 @@
 import StriveIcon from "@/components/icons/icon";
-import LoginForm from "@/components/login-form";
+import Form from "@/components/form";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Link from "next/link";
+import { loginAction } from "@/app/actions/auth";
 
 export default function LoginPage() {
     return (
@@ -21,7 +22,7 @@ export default function LoginPage() {
                             </CardTitle>
                         </CardHeader>
                         <CardContent>
-                            <LoginForm />
+                            <Form actionHandler={loginAction} type="login" />
                         </CardContent>
                     </Card>
                 </div>
