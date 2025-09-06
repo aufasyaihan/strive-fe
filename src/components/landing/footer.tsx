@@ -1,5 +1,7 @@
 import Link from "next/link";
 import StriveIcon from "../icons/icon";
+import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
 
 export default function Footer() {
     return (
@@ -13,18 +15,18 @@ export default function Footer() {
                         <p className="text-gray-400 mb-4">
                             Empowering your journey to success through innovative learning experiences.
                         </p>
-                        <div className="flex space-x-4">
+                        <div className="flex space-x-4 text-2xl">
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                                <span className="text-xl">📘</span>
+                                <FaInstagram />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                                <span className="text-xl">🐦</span>
+                                <FaFacebook />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                                <span className="text-xl">💼</span>
+                                <FaXTwitter />
                             </a>
                             <a href="#" className="text-gray-400 hover:text-amber-500 transition-colors">
-                                <span className="text-xl">📸</span>
+                                <FaLinkedin />
                             </a>
                         </div>
                     </div>

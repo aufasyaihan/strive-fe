@@ -98,10 +98,10 @@ export default function Contact() {
                                         Call Us
                                     </h3>
                                     <p className="text-gray-600">
-                                        +1 (555) 123-4567
+                                        +62 (021) 123-4567
                                     </p>
                                     <p className="text-gray-600">
-                                        Mon-Fri, 9am-6pm EST
+                                        Mon-Fri, 9am-6pm WIB
                                     </p>
                                 </div>
                             </div>
@@ -117,10 +117,10 @@ export default function Contact() {
                                         Visit Us
                                     </h3>
                                     <p className="text-gray-600">
-                                        123 Learning Street
+                                        Walk Walk Tower, 5th Floor
                                     </p>
                                     <p className="text-gray-600">
-                                        Education City, EC 12345
+                                        Atlantis City, Jakarta, Indonesia
                                     </p>
                                 </div>
                             </div>

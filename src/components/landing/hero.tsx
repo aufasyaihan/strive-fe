@@ -69,23 +69,23 @@ export default function Hero() {
                 <div className="flex gap-12 text-center">
                     <div className="flex flex-col items-center group">
                         <div className="text-4xl font-bold text-amber-500 mb-1 transition-colors group-hover:text-amber-600">
-                            <AnimatedCounter end={10} suffix="K+" />
+                            <AnimatedCounter end={4} suffix="K+" />
                         </div>
-                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Students</div>
+                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Users</div>
                     </div>
                     <div className="w-px bg-gray-200"></div>
                     <div className="flex flex-col items-center group">
                         <div className="text-4xl font-bold text-amber-500 mb-1 transition-colors group-hover:text-amber-600">
-                            <AnimatedCounter end={500} suffix="+" />
+                            <AnimatedCounter end={100} suffix="+" />
                         </div>
-                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Courses</div>
+                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Videos</div>
                     </div>
                     <div className="w-px bg-gray-200"></div>
                     <div className="flex flex-col items-center group">
                         <div className="text-4xl font-bold text-amber-500 mb-1 transition-colors group-hover:text-amber-600">
-                            <AnimatedCounter end={95} suffix="%" />
+                            <AnimatedCounter end={150} suffix="+" />
                         </div>
-                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Success Rate</div>
+                        <div className="text-sm font-medium text-gray-600 uppercase tracking-wide">Articles</div>
                     </div>
                 </div>
             </Card>
