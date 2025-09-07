@@ -13,10 +13,10 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
     SidebarMenuSub,
-    SidebarMenuSubButton,
     SidebarMenuSubItem,
 } from "@/components/ui/sidebar";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
+import NavLink from "./nav-link";
 
 export function NavMain({
     items,
@@ -32,6 +32,7 @@ export function NavMain({
         }[];
     }[];
 }) {
+    const path = usePathname();
     return (
         <SidebarGroup>
             <SidebarMenu>
@@ -39,12 +40,11 @@ export function NavMain({
                     if (!item.items) {
                         return (
                             <SidebarMenuItem key={item.title}>
-                                <SidebarMenuButton asChild tooltip={item.title}>
-                                    <Link href={item.url}>
-                                        {item.icon && <item.icon />}
-                                        <span>{item.title}</span>
-                                    </Link>
-                                </SidebarMenuButton>
+                                <NavLink
+                                    href={item.url}
+                                    title={item.title}
+                                    icon={item.icon}
+                                />
                             </SidebarMenuItem>
                         );
                     }
@@ -52,11 +52,17 @@ export function NavMain({
                         <Collapsible
                             key={item.title}
                             asChild
+                            defaultOpen={item.items.some(
+                                (sub) => sub.url === path
+                            )}
                             className="group/collapsible curp"
                         >
                             <SidebarMenuItem>
                                 <CollapsibleTrigger asChild>
-                                    <SidebarMenuButton className="cursor-pointer" tooltip={item.title}>
+                                    <SidebarMenuButton
+                                        className="cursor-pointer"
+                                        tooltip={item.title}
+                                    >
                                         {item.icon && <item.icon />}
                                         <span>{item.title}</span>
                                         <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
@@ -68,13 +74,12 @@ export function NavMain({
                                             <SidebarMenuSubItem
                                                 key={subItem.title}
                                             >
-                                                <SidebarMenuSubButton asChild>
-                                                    <Link href={subItem.url}>
-                                                        <span>
-                                                            {subItem.title}
-                                                        </span>
-                                                    </Link>
-                                                </SidebarMenuSubButton>
+                                                <NavLink
+                                                    href={subItem.url}
+                                                    title={subItem.title}
+                                                    nested
+                                                    sub
+                                                />
                                             </SidebarMenuSubItem>
                                         ))}
                                     </SidebarMenuSub>

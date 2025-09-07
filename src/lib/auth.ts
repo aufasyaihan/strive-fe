@@ -1,9 +1,10 @@
 "use server";
 
-import { ProfilResponse, User } from "@/types/auth";
+import { User } from "@/types/auth";
 import { cookies } from "next/headers";
 import { getToken } from "./cookies";
 import { cache } from "react";
+import { ApiResponse } from "@/types/general";
 
 export async function isLoggedIn(): Promise<boolean> {
     const cookieStore = await cookies();
@@ -60,7 +61,7 @@ export const getCurrentUser = cache(async (): Promise<User | null> => {
             return null;
         }
 
-        const user: ProfilResponse = await res.json();
+        const user: ApiResponse<User> = await res.json();
         console.log("Fetched current user:", user);
 
         return user.data;

@@ -18,11 +18,6 @@ export interface Error {
     [key: string]: string[] | undefined;
 }
 
-export interface loginResponse {
-  meta: Meta
-  data: LoginData
-}
-
 export interface Meta {
   message: string
   code: number
@@ -30,11 +25,6 @@ export interface Meta {
 
 export interface LoginData {
   access_token: string
-}
-
-export interface ProfilResponse {
-  meta: Meta
-  data: User
 }
 
 export interface User {

@@ -1,7 +1,8 @@
 "use server";
 
 import { deleteToken, saveToken } from "@/lib/cookies";
-import { ActionState, loginResponse } from "@/types/auth";
+import { ActionState, LoginData } from "@/types/auth";
+import { ApiResponse } from "@/types/general";
 import { redirect } from "next/navigation";
 import z from "zod";
 
@@ -68,7 +69,7 @@ export async function loginAction(
             },
             body: JSON.stringify(payload),
         });
-        const data: loginResponse = await res.json();
+        const data: ApiResponse<LoginData> = await res.json();
         // console.log("Login response data:", data);
 
         if (!res.ok) {
@@ -129,7 +130,7 @@ export async function registerAction(
             },
             body: JSON.stringify(payload),
         });
-        const data: loginResponse = await res.json();
+        const data: ApiResponse<LoginData> = await res.json();
         console.log("Register response data:", data);
         if (!res.ok) {
             return {
