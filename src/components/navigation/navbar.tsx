@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import StriveIcon from "../icons/icon";
 
@@ -6,9 +8,12 @@ export default function Navbar() {
         <>
             <nav className="mx-auto max-w-2xl bg-white/20 px-4 py-0.5 rounded-full shadow-lg backdrop-blur-sm border border-gray-200/50 h-fit">
                 <div className="flex gap-12 justify-between items-center">
-                    <Link href="#hero">
-                        <StriveIcon className="h-11 w-20 stroke-2 text-amber-500 -translate-y-1" />
-                    </Link>
+                    <StriveIcon
+                        className="h-11 w-20 stroke-2 text-amber-500 -translate-y-1 cursor-pointer"
+                        onClick={() =>
+                            window.scrollTo({ top: 0, behavior: "smooth" })
+                        }
+                    />
                     <ul className="flex items-center gap-4">
                         <li>
                             <Link href="#about" className="group">
