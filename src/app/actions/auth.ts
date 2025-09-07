@@ -1,6 +1,6 @@
 "use server";
 
-import { saveCookie } from "@/lib/cookies";
+import { saveToken } from "@/lib/cookies";
 import { ActionState, loginResponse } from "@/types/auth";
 import z from "zod";
 
@@ -78,7 +78,7 @@ export async function loginAction(
             };
         }
 
-        await saveCookie(
+        await saveToken(
             "access_token",
             data.data.access_token,
             24 * 60 * 60 * 7
