@@ -1,7 +1,8 @@
 "use server";
 
-import { saveToken } from "@/lib/cookies";
+import { deleteToken, saveToken } from "@/lib/cookies";
 import { ActionState, loginResponse } from "@/types/auth";
+import { redirect } from "next/navigation";
 import z from "zod";
 
 const loginSchema = z.object({
@@ -68,7 +69,7 @@ export async function loginAction(
             body: JSON.stringify(payload),
         });
         const data: loginResponse = await res.json();
-        console.log("Login response data:", data);
+        // console.log("Login response data:", data);
 
         if (!res.ok) {
             return {
@@ -85,7 +86,7 @@ export async function loginAction(
         );
         return {
             success: true,
-        }
+        };
     } catch (error) {
         console.error("Login failed:", error);
         return {
@@ -139,7 +140,7 @@ export async function registerAction(
         }
         return {
             success: true,
-        }
+        };
     } catch (error) {
         console.error("Registration failed:", error);
         return {
@@ -154,5 +155,17 @@ export async function registerAction(
                 email: email,
             },
         };
+    }
+}
+
+export async function logout() {
+    try {
+        await deleteToken("access_token");
+        redirect("/login");
+    } catch (error) {
+        if (error instanceof Error && error.message === "NEXT_REDIRECT") {
+            throw error;
+        }
+        console.error("Logout failed:", error);
     }
 }

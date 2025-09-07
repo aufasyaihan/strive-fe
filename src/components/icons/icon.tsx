@@ -1,4 +1,24 @@
-export default function StriveIcon(props: React.SVGProps<SVGSVGElement>) {
+export default function StriveIcon({
+    type = "full",
+    ...props
+}: React.SVGProps<SVGSVGElement> & { type?: "icon" | "full" }) {
+    if (type === "icon") {
+        return (
+            <svg
+                width="37"
+                height="55"
+                viewBox="0 0 37 55"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                {...props}
+            >
+                <path
+                    d="M12.6534 54.9999L0.221436 25.5999H6.43744L15.3974 47.6079L14.3334 48.1119L30.635 0.5H36.5709L16.7974 54.9999H12.6534Z"
+                    fill="currentColor"
+                />
+            </svg>
+        );
+    }
     return (
         <svg
             width="190"
