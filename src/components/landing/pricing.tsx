@@ -26,11 +26,8 @@ export default function Pricing() {
                                     Plan A
                                 </h3>
                                 <div className="mb-6">
-                                    <span className="text-4xl font-bold">
-                                        $9
-                                    </span>
-                                    <span className="text-gray-600">
-                                        /month
+                                    <span className="text-4xl font-bold text-amber-500">
+                                        FREE
                                     </span>
                                 </div>
                                 <ul className="text-left space-y-3 mb-8">
