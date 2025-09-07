@@ -20,7 +20,7 @@ export interface Error {
 
 export interface loginResponse {
   meta: Meta
-  data: Data
+  data: LoginData
 }
 
 export interface Meta {
@@ -28,6 +28,20 @@ export interface Meta {
   code: number
 }
 
-export interface Data {
+export interface LoginData {
   access_token: string
+}
+
+export interface ProfilResponse {
+  meta: Meta
+  data: User
+}
+
+export interface User {
+  id: string
+  email: string
+  firstName: string
+  lastName: string
+  role: string
+  membership: "A" | "B" | "C"
 }

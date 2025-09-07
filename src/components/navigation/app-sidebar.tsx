@@ -28,11 +28,11 @@ const data = {
             items: [
                 {
                     title: "Videos",
-                    url: "/video",
+                    url: "/dashboard/video",
                 },
                 {
                     title: "Articles",
-                    url: "/article",
+                    url: "/dashboard/article",
                 },
             ],
         },
