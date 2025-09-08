@@ -13,23 +13,37 @@ import {
 import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { useAuth } from "@/store/auth-context";
+import { useMembership } from "@/store/membership-context";
 import { Badge } from "../ui/badge";
 
 export default function Header() {
     const { user } = useAuth();
+    const { membershipLimits } = useMembership();
+
+    const getMembershipDisplay = () => {
+        if (!user || !membershipLimits) return "Loading...";
+        
+        const totalUsed = (user.articlesCount || 0) + (user.videosCount || 0);
+        
+        switch (user.membership) {
+            case "A":
+                return `${totalUsed} / 10 Articles & Videos`;
+            case "B":
+                return `${totalUsed} / 20 Articles & Videos`;
+            case "C":
+                return "Unlimited Articles & Videos";
+            default:
+                return "No Plan";
+        }
+    };
+
     return (
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
             <div className="flex justify-between items-center gap-2 px-4 w-full">
                 <div className="flex gap-2 items-center">
                     <SidebarTrigger className="-ml-1" />
                     <Badge className="text-sm px-2 py-1 rounded-md bg-amber-100 text-amber-800">
-                        {user?.membership === "A"
-                            ? "0 / 5 Articles & Videos"
-                            : user?.membership === "B"
-                            ? "0 / 10 Articles & Videos"
-                            : user?.membership === "C"
-                            ? "Unlimited Articles & Videos"
-                            : "No Plan"}
+                        {getMembershipDisplay()}
                     </Badge>
                 </div>
                 <DropdownMenu>

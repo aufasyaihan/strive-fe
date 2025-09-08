@@ -34,4 +34,14 @@ export interface User {
   lastName: string
   role: string
   membership: "A" | "B" | "C"
+  articlesCount: number
+  videosCount: number
+}
+
+export interface MembershipLimits {
+  canAccessArticle: boolean
+  canAccessVideo: boolean
+  articlesRemaining: number | null
+  videosRemaining: number | null
+  currentPlan: string
 }

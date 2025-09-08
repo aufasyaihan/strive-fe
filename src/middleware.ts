@@ -1,8 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getToken } from "./lib/cookies";
 
-const PUBLIC_PATHS = ["/login", "/register", "/"];
-const PRIVATE_PATHS = ["/dashboard"];
+const PUBLIC_PATHS = ["/login", "/register"];
+const PRIVATE_PATH = "/dashboard";
 
 export async function middleware(req: NextRequest) {
   const {pathname} = req.nextUrl;
@@ -22,9 +22,10 @@ export async function middleware(req: NextRequest) {
         return NextResponse.redirect(new URL("/dashboard", req.url));
     }
 
-    if (PRIVATE_PATHS.includes(pathname) && isExpired) {
+    if (pathname.startsWith(PRIVATE_PATH) && isExpired) {
         return NextResponse.redirect(new URL("/login", req.url));
     }
+    
     return NextResponse.next();
 }
 

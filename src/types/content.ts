@@ -9,6 +9,12 @@ export interface Author {
   updatedAt: string;
 }
 
+export interface MembershipInfo {
+  currentPlan: string;
+  articlesRemaining: number | 'unlimited';
+  videosRemaining?: number | 'unlimited';
+}
+
 export interface Article {
   id: string;
   title: string;
@@ -18,6 +24,7 @@ export interface Article {
   createdAt: string;
   updatedAt: string;
   author: Author;
+  membershipInfo?: MembershipInfo;
 }
 
 export interface Video {
@@ -30,4 +37,5 @@ export interface Video {
   createdAt: string;
   updatedAt: string;
   author: Author;
+  membershipInfo?: MembershipInfo;
 }
