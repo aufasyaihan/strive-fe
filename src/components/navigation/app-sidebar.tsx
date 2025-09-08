@@ -1,6 +1,6 @@
 "use client";
 
-import { ChartLine, Home, CreditCard } from "lucide-react";
+import { ChartLine, Home } from "lucide-react";
 
 import { NavMain } from "@/components/navigation/nav-main";
 import {
@@ -35,11 +35,6 @@ const data = {
                     url: "/dashboard/article",
                 },
             ],
-        },
-        {
-            title: "Membership",
-            url: "/dashboard/pricing",
-            icon: CreditCard,
         },
     ],
 };

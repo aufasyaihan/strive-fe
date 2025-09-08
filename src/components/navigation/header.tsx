@@ -2,7 +2,7 @@
 
 import { Avatar } from "@radix-ui/react-avatar";
 import { SidebarTrigger } from "../ui/sidebar";
-import { ChevronDown, LogOut, User } from "lucide-react";
+import { ChevronDown, LogOut } from "lucide-react";
 import { AvatarFallback, AvatarImage } from "../ui/avatar";
 import {
     DropdownMenu,
@@ -10,7 +10,6 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from "../ui/dropdown-menu";
-import Link from "next/link";
 import { logout } from "@/app/actions/auth";
 import { useAuth } from "@/store/auth-context";
 import { useMembership } from "@/store/membership-context";
@@ -55,11 +54,6 @@ export default function Header() {
                         <ChevronDown className="h-4 w-4" />
                     </DropdownMenuTrigger>
                     <DropdownMenuContent align="end">
-                        <DropdownMenuItem className="cursor-pointer">
-                            <Link href="/profile" className="flex gap-2">
-                                <User /> <p>Profile</p>
-                            </Link>
-                        </DropdownMenuItem>
                         <DropdownMenuItem
                             variant="destructive"
                             className="flex gap-2 cursor-pointer"

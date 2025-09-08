@@ -1,7 +1,7 @@
 "use server";
 
-import { deleteToken, saveToken } from "@/lib/cookies";
-import { ActionState, LoginData } from "@/types/auth";
+import { deleteToken, saveToken, getToken } from "@/lib/cookies";
+import { ActionState, LoginData, User } from "@/types/auth";
 import { ApiResponse } from "@/types/general";
 import { redirect } from "next/navigation";
 import z from "zod";
@@ -168,5 +168,44 @@ export async function logout() {
             throw error;
         }
         console.error("Logout failed:", error);
+    }
+}
+
+export async function updateMembershipAction(membershipPackage: string): Promise<{ success: boolean; message: string; user?: User }> {
+    try {
+        const token = await getToken("access_token");
+        if (!token) {
+            throw new Error("No authentication token found");
+        }
+
+        const res = await fetch(`${process.env.BACKEND_URL}/auth/membership`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`,
+            },
+            body: JSON.stringify({ membershipPackage }),
+        });
+
+        const data: ApiResponse<User> = await res.json();
+
+        if (!res.ok) {
+            return {
+                success: false,
+                message: data.meta.message || "Failed to update membership",
+            };
+        }
+
+        return {
+            success: true,
+            message: data.meta.message || "Membership updated successfully",
+            user: data.data,
+        };
+    } catch (error) {
+        console.error("Error updating membership:", error);
+        return {
+            success: false,
+            message: (error as Error).message || "An error occurred while updating membership",
+        };
     }
 }

@@ -2,8 +2,10 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
+import { Button } from '@/components/ui/button'
 import { useMembership } from '@/store/membership-context'
 import { useAuth } from '@/store/auth-context'
+import { MembershipUpgradeModal } from './membership-upgrade-modal'
 
 export function MembershipCard() {
   const { membershipLimits, loading } = useMembership()
@@ -28,9 +30,9 @@ export function MembershipCard() {
 
   const getPlanName = (plan: string) => {
     switch (plan) {
-      case 'A': return 'Plan A'
-      case 'B': return 'Plan B'
-      case 'C': return 'Plan C'
+      case 'A': return 'Starter Plan'
+      case 'B': return 'Professional Plan'
+      case 'C': return 'Premium Plan'
       default: return plan
     }
   }
@@ -97,10 +99,29 @@ export function MembershipCard() {
         
         {(membershipLimits.articlesRemaining === 0 || membershipLimits.videosRemaining === 0) && (
           <div className="p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-            <p className="text-sm text-yellow-800">
-              You&apos;ve reached your {membershipLimits.currentPlan} plan limits. 
+            <p className="text-sm text-yellow-800 mb-2">
+              You&apos;ve reached your {getPlanName(membershipLimits.currentPlan)} limits. 
               Consider upgrading to access more content.
             </p>
+            <MembershipUpgradeModal
+              trigger={
+                <Button size="sm">
+                  Upgrade Plan
+                </Button>
+              }
+            />
+          </div>
+        )}
+
+        {membershipLimits.currentPlan !== 'C' && (
+          <div className="pt-4 border-t">
+            <MembershipUpgradeModal
+              trigger={
+                <Button variant="outline" className="w-full">
+                  Manage Membership
+                </Button>
+              }
+            />
           </div>
         )}
       </CardContent>

@@ -45,3 +45,10 @@ export interface MembershipLimits {
   videosRemaining: number | null
   currentPlan: string
 }
+
+export interface MembershipPackage {
+  id: string
+  package: "A" | "B" | "C"
+  articleLimit: number | null
+  videoLimit: number | null
+}

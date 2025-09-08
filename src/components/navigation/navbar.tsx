@@ -2,8 +2,24 @@
 
 import Link from "next/link";
 import StriveIcon from "../icons/icon";
+import { useEffect, useState } from "react";
+import { getToken } from "@/lib/cookies";
 
 export default function Navbar() {
+    const [isLoggedIn, setIsLoggedIn] = useState<boolean>(false);
+
+    useEffect(() => {
+        const fetchLoginStatus = async () => {
+            try {
+                const token = await getToken("access_token");
+                setIsLoggedIn(!!token);
+            } catch (error) {
+                console.error("Error checking login status:", error);
+                setIsLoggedIn(false);
+            }
+        };
+        fetchLoginStatus();
+    }, []);
     return (
         <>
             <nav className="mx-auto max-w-2xl bg-white/20 px-4 py-0.5 rounded-full shadow-lg backdrop-blur-sm border border-gray-200/50 h-fit">
@@ -39,10 +55,10 @@ export default function Navbar() {
             <nav className="mx-auto max-w-2xl bg-white/20 p-2 rounded-full shadow-lg backdrop-blur-sm border border-gray-200/50 my-auto">
                 <div className="flex gap-2 items-center justify-center">
                     <Link
-                        href="/login"
+                        href={isLoggedIn ? "/dashboard" : "/login"}
                         className="text-white bg-amber-500 hover:bg-amber-600 rounded-full px-4 py-1 transition-colors ease-in-out duration-200"
                     >
-                        Login
+                        {isLoggedIn ? "Dashboard" : "Login"}
                     </Link>
                 </div>
             </nav>
