@@ -29,4 +29,5 @@ export interface Video {
   authorId: string;
   createdAt: string;
   updatedAt: string;
+  author: Author;
 }
